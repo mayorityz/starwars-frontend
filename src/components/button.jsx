@@ -51,9 +51,6 @@ class Button extends Component {
       longestCrawl(),
       species()
     ]);
-    console.log(
-      `most appearance : ${mA}, longestCrawl : ${longestCrawl_}, species : ${species_}`
-    );
 
     this.setState({
       loading: false,
@@ -64,21 +61,24 @@ class Button extends Component {
   }
 
   clicked = () => {
-    // console.log(
-    //   `${this.state.longest}, ${this.state.species}, ${this.state.mostApp}`
-    // );
-
     this.setState({
       displayResult: !this.state.displayResult
     });
   };
 
+  ourExpectedStates = () => {
+    return this.state;
+  };
+
   render() {
-    const answer = this.state.species;
     return (
       <React.Fragment>
         <div className="flex_area">
-          <button className="call_btn" onClick={this.clicked}>
+          <button
+            className="call_btn"
+            onClick={this.clicked}
+            check={this.state}
+          >
             Do It Or Not Do It. There Is No Try
           </button>
         </div>
@@ -105,7 +105,7 @@ class Button extends Component {
           <div>
             <h2 style={{ color: "white" }}>Which species appeared the most?</h2>
             <div>
-              {answer.map((x, i) => (
+              {this.state.species.map((x, i) => (
                 <p key={i}>
                   {x.specie} ({x.appearances})
                 </p>
