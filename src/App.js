@@ -1,13 +1,20 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import logo from "./starwars.png";
-import Button from "./components/button";
+import Navbar from "./components/navigation";
+import Login from "./components/credentials/login";
+import Register from "./components/credentials/newaccount";
+import Landing from "./components/home";
 
 function App() {
   return (
     <div className="App">
-      <img src={logo} className="App-logo" alt="logo" />
-      <Button />
+      <Navbar />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/" exact component={Landing} />
+      </Switch>
     </div>
   );
 }

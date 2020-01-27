@@ -1,0 +1,6 @@
+{
+    "appearances": "http://localhost:8080/most-appearance",
+    "allspecies": "http://localhost:8080/species",
+    "films": "http://localhost:8080/films",
+    "newuser": "http://localhost:8080/newaccount"
+}
