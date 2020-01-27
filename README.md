@@ -17,3 +17,7 @@ The api is immediately pulled in the componentDidMount function,
 and the click of the button, the results are displayed.
 
 Regards!
+
+### Deployed Version
+
+url : https://star-wars-frontend.surge.sh/

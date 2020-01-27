@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { appearances, films, allspecies } from "../config/endPoints.json";
 class Button extends Component {
   state = {
     loading: true,
@@ -9,16 +9,9 @@ class Button extends Component {
     displayResult: false
   };
   async componentDidMount() {
-    let mostApp = () => {
+    let promise_ = point => {
       return new Promise((resolve, rej) => {
-        fetch("http://localhost:8080/most-appearance").then(res => {
-          resolve(res.json());
-        });
-      });
-    };
-    let species = () => {
-      return new Promise((resolve, rej) => {
-        fetch("http://localhost:8080/species")
+        fetch(point)
           .then(res => {
             return res;
           })
@@ -31,20 +24,16 @@ class Button extends Component {
       });
     };
 
-    let longestCrawl = () => {
+    let mostApp = () => {
       return new Promise((resolve, rej) => {
-        fetch("http://localhost:8080/films")
-          .then(res => {
-            return res;
-          })
-          .then(resJson => {
-            resolve(resJson.json());
-          })
-          .catch(err => {
-            rej();
-          });
+        fetch(appearances).then(res => {
+          resolve(res.json());
+        });
       });
     };
+
+    let species = () => promise_(allspecies);
+    let longestCrawl = () => promise_(films);
 
     const [mA, longestCrawl_, species_] = await Promise.all([
       mostApp(),
